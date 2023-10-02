@@ -13,14 +13,16 @@ Type1 Min(Type1 a, Type2 b) {
 
 template <>
 char Min<char>(char a, char b) {
-	return printf("”šˆÈŠO‚Í‘ã“ü‚Å‚«‚Ü‚¹‚ñ\n");
+	printf("æ•°å­—ä»¥å¤–ã¯ä»£å…¥ã§ãã¾ã›ã‚“\n");
+
+	return NULL;
 }
 
 int main(void) {
 	printf("%d\n", Min<int, int>(12, 4));
 	printf("%f\n", Min<float, float>(8.0f, 30.0f));
 	printf("%lf\n", Min<double, double>(5.0000, 13.0000));
-	printf("%c\n", Min<char, char>(1.0f, 10.0f));
+	printf("%d\n", Min<char, char>(1, 10));
 
 	return 0;
 }
