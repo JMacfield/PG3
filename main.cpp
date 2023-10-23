@@ -14,16 +14,16 @@ int DiceRoll() {
 
 typedef void (*pFunction)(int a, int b);
 
-void TimeSet(pFunction function,int second, int diceResult, int playerGuess) {
+void TimeSet(pFunction function,int second, int diceResult, int playerChoice) {
 	Sleep(second * 1000);
-	function(diceResult, playerGuess);
+	function(diceResult, playerChoice);
 }
 
-void Result(int diceResult, int playerGuess) {
+void Result(int diceResult, int playerChoice) {
 	cout << "サイコロの出目は" << diceResult << "で";
 	cout << (diceResult % 2 == 0 ? "偶数" : "奇数") << "です" << endl;
 
-	if ((diceResult % 2 == 0 && playerGuess == 2) || (diceResult % 2 == 1 && playerGuess == 1)) {
+	if ((diceResult % 2 == 0 && playerChoice == 2) || (diceResult % 2 == 1 && playerChoice == 1)) {
 		cout << "当たり" << endl;
 	}
 	else {
@@ -31,24 +31,24 @@ void Result(int diceResult, int playerGuess) {
 	}
 }
 
-int PlayerGuess() {
-	int playerGuess = 0;
+int PlayerChoice() {
+	int playerChoice = 0;
 
-	while (playerGuess != 1 && playerGuess != 2) {
+	while (playerChoice != 1 && playerChoice != 2) {
 		cout << "奇数か偶数を選択してEnterを押してください" << std::endl;
 		cout << "1 : 奇数, 2 : 偶数" << endl;
-		cin >> playerGuess;
+		cin >> playerChoice;
 	}
 
-	return playerGuess;
+	return playerChoice;
 }
 
 int main(void) {
-	int playerGuess = PlayerGuess();
+	int playerChoice = PlayerChoice();
 	int diceResult = DiceRoll();
 
 	pFunction result = Result;
-	TimeSet(result, 3, diceResult, playerGuess);
+	TimeSet(result, 3, diceResult, playerChoice);
 
 	return 0;
 }
