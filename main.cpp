@@ -1,4 +1,4 @@
-#include <iostream>
+﻿#include <iostream>
 
 uint32_t CalculateRecursivePayment(uint32_t payment, uint32_t hour) {
 	if (hour <= 0) {
