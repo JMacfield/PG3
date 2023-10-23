@@ -1,4 +1,4 @@
-#include <iostream>
+﻿#include <iostream>
 #include <stdio.h>
 #include <typeinfo>
 
@@ -14,7 +14,7 @@ void PrintMin(Type a) {
 
 template<>
 void PrintMin<char>(char a) {
-	std::cout << "文字列以外は代入できません。" << std::endl;
+	std::cout << "文字列以外は代入できません" << std::endl;
 }
 
 int main(void) {
