@@ -1,28 +1,27 @@
+#include <iostream>
 #include <stdio.h>
+#include <typeinfo>
 
-template<typename Type1, typename Type2>
-
-Type1 Min(Type1 a, Type2 b) {
-	if (static_cast<Type1>(a) <= static_cast<Type2>(b)) {
-		return static_cast<Type1>(a);
-	}
-	else {
-		return static_cast<Type1>(b);
-	}
+template<typename Type>
+Type Min(Type a, Type b) {
+	return a > b ? b : a;
 }
 
-template <>
-char Min<char>(char a, char b) {
-	printf("æ•°å­—ä»¥å¤–ã¯ä»£å…¥ã§ãã¾ã›ã‚“\n");
+template <typename Type>
+void PrintMin(Type a) {
+	std::cout << typeid(a).name() << ";" << a << std::endl;
+}
 
-	return NULL;
+template<>
+void PrintMin<char>(char a) {
+	printf_s("•¶š—ñˆÈŠO‚Í‘ã“ü‚Å‚«‚Ü‚¹‚ñB");
 }
 
 int main(void) {
-	printf("%d\n", Min<int, int>(12, 4));
-	printf("%f\n", Min<float, float>(8.0f, 30.0f));
-	printf("%lf\n", Min<double, double>(5.0000, 13.0000));
-	printf("%d\n", Min<char, char>(1, 10));
+	PrintMin(Min<int>(7, 12));
+	PrintMin(Min<float>(3.0f, 9.0f));
+	PrintMin(Min<double>(static_cast<double>(4.0f), static_cast<double>(3.0f));
+	PrintMin(Min<char>('y', 't'));
 
 	return 0;
 }
