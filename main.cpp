@@ -14,13 +14,13 @@ void PrintMin(Type a) {
 
 template<>
 void PrintMin<char>(char a) {
-	printf_s("文字列以外は代入できません。");
+	std::cout << "文字列以外は代入できません。" << std::endl;
 }
 
 int main(void) {
 	PrintMin(Min<int>(7, 12));
 	PrintMin(Min<float>(3.0f, 9.0f));
-	PrintMin(Min<double>(static_cast<double>(4.0f), static_cast<double>(3.0f));
+	PrintMin(Min<double>(static_cast<double>(4.0f), static_cast<double>(3.0f)));
 	PrintMin(Min<char>('y', 't'));
 
 	return 0;
