@@ -14,7 +14,7 @@ int DiceRoll() {
 
 typedef void (*pFunction)(int a, int b);
 
-void TimeSet(pFunction function,int second, int diceResult, int playerChoice) {
+void SetTimeOut(pFunction function,int second, int diceResult, int playerChoice) {
 	Sleep(second * 1000);
 	function(diceResult, playerChoice);
 }
@@ -48,7 +48,7 @@ int main(void) {
 	int diceResult = DiceRoll();
 
 	pFunction result = Result;
-	TimeSet(result, 3, diceResult, playerChoice);
+	SetTimeOut(result, 3, diceResult, playerChoice);
 
 	return 0;
 }
