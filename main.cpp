@@ -1,3 +1,4 @@
+ï»¿#include <functional>
 #include <iostream>
 #include <stdio.h>
 #include <random>
@@ -5,29 +6,22 @@
 
 using namespace std;
 
-std::random_device rd;
-std::mt19937 mt(rd());
-
-int DiceRoll() {
-	return mt() % 6 + 1;
-}
-
 typedef void (*pFunction)(int a, int b);
 
-void TimeSet(pFunction function,int second, int diceResult, int playerChoice) {
+void SetTimeOut(pFunction function, int second, int diceResult, int playerChoice) {
 	Sleep(second * 1000);
 	function(diceResult, playerChoice);
 }
 
 void Result(int diceResult, int playerChoice) {
-	cout << "ƒTƒCƒRƒ‚Ìo–Ú‚Í" << diceResult << "‚Å";
-	cout << (diceResult % 2 == 0 ? "‹ô”" : "Šï”") << "‚Å‚·" << endl;
-
+	cout << "ã‚µã‚¤ã‚³ãƒ­ã®å‡ºç›®ã¯" << diceResult << "ã§";
+	cout << (diceResult % 2 == 0 ? "å¶æ•°" : "å¥‡æ•°") << "ã§ã™" << endl;
+	
 	if ((diceResult % 2 == 0 && playerChoice == 2) || (diceResult % 2 == 1 && playerChoice == 1)) {
-		cout << "“–‚½‚è" << endl;
+		cout << "å½“ãŸã‚Š" << endl;
 	}
 	else {
-		cout << "ŠO‚ê" << endl;
+		cout << "å¤–ã‚Œ" << endl;
 	}
 }
 
@@ -35,8 +29,8 @@ int PlayerChoice() {
 	int playerChoice = 0;
 
 	while (playerChoice != 1 && playerChoice != 2) {
-		cout << "Šï”‚©‹ô”‚ð‘I‘ð‚µ‚ÄEnter‚ð‰Ÿ‚µ‚Ä‚­‚¾‚³‚¢" << std::endl;
-		cout << "1 : Šï”, 2 : ‹ô”" << endl;
+		cout << "å¥‡æ•°ã‹å¶æ•°ã‚’é¸æŠžã—ã¦Enterã‚’æŠ¼ã—ã¦ãã ã•ã„" << std::endl;
+		cout << "1 : å¥‡æ•°, 2 : å¶æ•°" << endl;
 		cin >> playerChoice;
 	}
 
@@ -44,11 +38,20 @@ int PlayerChoice() {
 }
 
 int main(void) {
+	std::random_device rd;
+	std::mt19937 mt(rd());
+
 	int playerChoice = PlayerChoice();
-	int diceResult = DiceRoll();
+
+	std::function<int()>diceRoll = [&mt]() {
+		return mt() % 6 + 1;
+		};
+
+	int diceResult = diceRoll();
 
 	pFunction result = Result;
-	TimeSet(result, 3, diceResult, playerChoice);
+
+	SetTimeOut(result, 3, diceResult, playerChoice);
 
 	return 0;
 }
