@@ -104,6 +104,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>$(ProjectDir)NEEC/Hachioji;$(ProjectDir)NEEC/Kamata;$(ProjectDir)NEEC;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -128,6 +129,14 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="NEEC\Hachioji\Hachioji.cpp" />
+    <ClCompile Include="NEEC\Kamata\Kamata.cpp" />
+    <ClCompile Include="NEEC\NEEC.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="NEEC\Hachioji\Hachioji.h" />
+    <ClInclude Include="NEEC\Kamata\Kamata.h" />
+    <ClInclude Include="NEEC\NEEC.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
