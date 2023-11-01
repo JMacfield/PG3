@@ -1,54 +1,10 @@
-#include <iostream>
-#include <stdio.h>
-#include <random>
-#include <Windows.h>
-
-using namespace std;
-
-std::random_device rd;
-std::mt19937 mt(rd());
-
-int DiceRoll() {
-	return mt() % 6 + 1;
-}
-
-typedef void (*pFunction)(int a, int b);
-
-void SetTimeOut(pFunction function,int second, int diceResult, int playerChoice) {
-	Sleep(second * 1000);
-	function(diceResult, playerChoice);
-}
-
-void Result(int diceResult, int playerChoice) {
-	cout << "ƒTƒCƒRƒ‚Ìo–Ú‚Í" << diceResult << "‚Å";
-	cout << (diceResult % 2 == 0 ? "‹ô”" : "Šï”") << "‚Å‚·" << endl;
-
-	if ((diceResult % 2 == 0 && playerChoice == 2) || (diceResult % 2 == 1 && playerChoice == 1)) {
-		cout << "“–‚½‚è" << endl;
-	}
-	else {
-		cout << "ŠO‚ê" << endl;
-	}
-}
-
-int PlayerChoice() {
-	int playerChoice = 0;
-
-	while (playerChoice != 1 && playerChoice != 2) {
-		cout << "Šï”‚©‹ô”‚ð‘I‘ð‚µ‚ÄEnter‚ð‰Ÿ‚µ‚Ä‚­‚¾‚³‚¢" << std::endl;
-		cout << "1 : Šï”, 2 : ‹ô”" << endl;
-		cin >> playerChoice;
-	}
-
-	return playerChoice;
-}
+ï»¿#include "Enemy.h"
 
 int main(void) {
-	int playerChoice = PlayerChoice();
-	int diceResult = DiceRoll();
+	Enemy* enemy = new Enemy();
+	enemy->Update();
 
-	pFunction result = Result;
-	SetTimeOut(result, 3, diceResult, playerChoice);
+	delete enemy;
 
 	return 0;
 }
