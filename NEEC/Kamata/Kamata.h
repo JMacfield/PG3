@@ -5,5 +5,5 @@
 class Kamata : public NEEC {
 public:
 	Kamata(const char* name);
-	void Name() override;
+	void DisplayName() override;
 };

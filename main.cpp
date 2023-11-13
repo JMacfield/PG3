@@ -9,7 +9,7 @@ int main(void) {
 	neec[1] = new Hachioji("Hachioji Campus");
 
 	for (size_t i = 0; i < kCount; i++) {
-		neec[i]->Name();
+		neec[i]->DisplayName();
 	}
 
 	for (size_t i = 0; i < kCount; i++) {

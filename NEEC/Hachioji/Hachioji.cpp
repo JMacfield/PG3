@@ -4,6 +4,6 @@ Hachioji::Hachioji(const char* name) {
 	name_ = name;
 }
 
-void Hachioji::Name() {
+void Hachioji::DisplayName() {
 	cout << name_ << endl;
 }

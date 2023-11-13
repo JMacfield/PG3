@@ -1,5 +1,5 @@
 ﻿#include "NEEC.h"
 
-void NEEC::Name() {
+void NEEC::DisplayName() {
 	cout << name_ << endl;
 }
