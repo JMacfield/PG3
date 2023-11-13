@@ -104,7 +104,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(ProjectDir)ShapeFunction/Rectangle;$(ProjectDir)ShapeFunction/Circle;$(ProjectDir)ShapeFunction;$(ProjectDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)ShapeFunction/Rectangle;$(ProjectDir)ShapeFunction/Circle;$(ProjectDir)ShapeFunction;$(ProjectDir);%(AdditionalIncludeDirectories);$(ProjectDir)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -119,6 +119,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>;$(ProjectDir)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -129,14 +130,14 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="ShapeFunction\Circle\Circle.cpp" />
-    <ClCompile Include="ShapeFunction\IShape.cpp" />
-    <ClCompile Include="ShapeFunction\Rectangle\Rectangle.cpp" />
+    <ClCompile Include="Shape\Circle\Circle.cpp" />
+    <ClCompile Include="Shape\IShape.cpp" />
+    <ClCompile Include="Shape\Rectangle\Rectangle.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="ShapeFunction\Circle\Circle.h" />
-    <ClInclude Include="ShapeFunction\IShape.h" />
-    <ClInclude Include="ShapeFunction\Rectangle\Rectangle.h" />
+    <ClInclude Include="Shape\Circle\Circle.h" />
+    <ClInclude Include="Shape\IShape.h" />
+    <ClInclude Include="Shape\Rectangle\Rectangle.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

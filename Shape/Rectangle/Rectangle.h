@@ -1,6 +1,6 @@
 ﻿#pragma once
 
-#include "IShape.h"
+#include "Shape/IShape.h"
 
 class Rectangle : public IShape {
 public:

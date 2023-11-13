@@ -1,5 +1,5 @@
-﻿#include "Circle.h"
-#include "Rectangle.h"
+﻿#include "Shape/Circle/Circle.h"
+#include "Shape/Rectangle/Rectangle.h"
 
 int main(void) {
 	const size_t kShape = 2;
