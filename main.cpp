@@ -6,23 +6,9 @@
 
 using namespace std;
 
-typedef void (*pFunction)(int a, int b);
-
-void SetTimeOut(pFunction function, int second, int diceResult, int playerChoice) {
+void SetTimeOut(std::function<void()> function, int second) {
 	Sleep(second * 1000);
-	function(diceResult, playerChoice);
-}
-
-void Result(int diceResult, int playerChoice) {
-	cout << "サイコロの出目は" << diceResult << "で";
-	cout << (diceResult % 2 == 0 ? "偶数" : "奇数") << "です" << endl;
-	
-	if ((diceResult % 2 == 0 && playerChoice == 2) || (diceResult % 2 == 1 && playerChoice == 1)) {
-		cout << "当たり" << endl;
-	}
-	else {
-		cout << "外れ" << endl;
-	}
+	function();
 }
 
 int PlayerChoice() {
@@ -44,14 +30,13 @@ int main(void) {
 	int playerChoice = PlayerChoice();
 
 	std::function<int()>diceRoll = [&mt]() {
-		return mt() % 6 + 1;
+		std::cout << "さいころの出目は " << diceResult;
+		std::cout << " で";
+		std::cout << (diceResult % 2 == 0 ? "偶数" : "奇数");
+		std::cout << " です。" << std::endl;
 		};
 
-	int diceResult = diceRoll();
-
-	pFunction result = Result;
-
-	SetTimeOut(result, 3, diceResult, playerChoice);
+	SetTimeOut(result, 3);
 
 	return 0;
 }
