@@ -1,4 +1,4 @@
-﻿#include <stdio.h>
+#include <stdio.h>
 #include <Windows.h>
 
 #include <algorithm>
@@ -15,9 +15,12 @@ struct StudentAccount {
 };
 
 int main() {
+	SetConsoleOutputCP(65001);
+
 	std::list<StudentAccount> studentAccounts;
+
 	// 読み込むファイルを開く
-	std::ifstream inputFile("PG3_05_02.txt");
+	std::ifstream inputFile("05_02.txt");
 	assert(inputFile.is_open());
 
 	// 行ごとに読み込み
@@ -26,6 +29,7 @@ int main() {
 		// 1行分の文字列をストリームに変換して解析しやすくする
 		std::istringstream lineStream(line);
 		std::string account;
+		
 		while (getline(lineStream, account, ',')) {
 			StudentAccount studentAccount{};
 			studentAccount.name = account;
