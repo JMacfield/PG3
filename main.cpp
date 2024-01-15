@@ -1,4 +1,4 @@
-#include <functional>
+﻿#include <functional>
 #include <iostream>
 #include <stdio.h>
 #include <random>
@@ -24,8 +24,6 @@ int PlayerChoice() {
 }
 
 int main(void) {
-	SetConsoleOutputCP(65001);
-
 	std::random_device rd;
 	std::mt19937 mt(rd());
 
