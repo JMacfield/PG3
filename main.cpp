@@ -2,59 +2,51 @@
 #include <iostream>
 #include <stdio.h>
 #include <random>
-#include <Windows.h>
+#include <windows.h>
 
-using namespace std;
-
-typedef void (*pFunction)(int a, int b);
-
-void SetTimeOut(pFunction function, int second, int diceResult, int playerChoice) {
+void SetTime(std::function<void()> function, int second) {
 	Sleep(second * 1000);
-	function(diceResult, playerChoice);
+	function();
 }
 
-void Result(int diceResult, int playerChoice) {
-	cout << "サイコロの出目は" << diceResult << "で";
-	cout << (diceResult % 2 == 0 ? "偶数" : "奇数") << "です" << endl;
-	
+int GetUserGuess() {
+	int userGuess = 0;
 
-	if ((diceResult % 2 == 0 && playerChoice == 2) || (diceResult % 2 == 1 && playerChoice == 1)) {
-		cout << "当たり" << endl;
+	while (userGuess != 1 && userGuess != 2) {
+		std::cout << "奇数か偶数か選択しEnterを押してください" << std::endl;
+		std::cout << "1 : 奇数, 2 : 偶数" << std::endl;
+		std::cin >> userGuess;
 	}
-	else {
-		cout << "外れ" << endl;
-	}
-}
-
-int PlayerChoice() {
-	int playerChoice = 0;
-
-	while (playerChoice != 1 && playerChoice != 2) {
-		cout << "奇数か偶数を選択してEnterを押してください" << std::endl;
-		cout << "1 : 奇数, 2 : 偶数" << endl;
-		cin >> playerChoice;
-	}
-
-	return playerChoice;
+	return userGuess;
 }
 
 int main(void) {
-	SetConsoleOutputCP(65001);
-
 	std::random_device rd;
 	std::mt19937 mt(rd());
 
-	int playerChoice = PlayerChoice();
-
-	std::function<int()>diceRoll = [&mt]() {
+	int userGuess = GetUserGuess();
+	
+	std::function<int()> diceRoll = [&mt]() {
 		return mt() % 6 + 1;
 		};
 
 	int diceResult = diceRoll();
 
-	pFunction result = Result;
+	std::function<void()> result = [&]() {
+		std::cout << "さいころの出目は " << diceResult;
+		std::cout << " で";
+		std::cout << (diceResult % 2 == 0 ? "偶数" : "奇数");
+		std::cout << " です。" << std::endl;
 
-	SetTimeOut(result, 3, diceResult, playerChoice);
+		if ((diceResult % 2 == 0 && userGuess == 2) || (diceResult % 2 == 1 && userGuess == 1)) {
+			std::cout << "当たり！" << std::endl;
+		}
+		else {
+			std::cout << "はずれ..." << std::endl;
+		}
+		};
+
+	SetTime(result, 3);
 
 	return 0;
 }
