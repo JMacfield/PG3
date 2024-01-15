@@ -17,6 +17,7 @@ void Result(int diceResult, int playerChoice) {
 	cout << "サイコロの出目は" << diceResult << "で";
 	cout << (diceResult % 2 == 0 ? "偶数" : "奇数") << "です" << endl;
 	
+
 	if ((diceResult % 2 == 0 && playerChoice == 2) || (diceResult % 2 == 1 && playerChoice == 1)) {
 		cout << "当たり" << endl;
 	}
