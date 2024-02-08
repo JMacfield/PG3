@@ -4,7 +4,7 @@
 #include <random>
 #include <windows.h>
 
-void SetTime(std::function<void()> function, int second) {
+void SetTimeOut(std::function<void()> function, int second) {
 	Sleep(second * 1000);
 	function();
 }
@@ -46,7 +46,7 @@ int main(void) {
 		}
 		};
 
-	SetTime(result, 3);
+	SetTimeOut(result, 3);
 
 	return 0;
 }
